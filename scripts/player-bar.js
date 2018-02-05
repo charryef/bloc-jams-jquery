@@ -1,6 +1,7 @@
 {
   $('button#play-pause').on('click', function() {
-    player.playPause();
+    var helper = new Helper
+    helper.playPauseAndUpdate();
     $(this).attr('playState', player.playState);
   });
 
@@ -35,8 +36,13 @@
     const currentTime = player.getTime();
     const duration = player.getDuration();
     const percent = (currentTime / duration) * 100;
-    $('#time-control .currentTime').text(currentTime);
+    $('#time-control .current-time').text(player.prettyTime(currentTime));
+    $('#time-control .total-time').text(player.prettyTime(duration));
     $('#time-control input').val(percent);
   }, 1000);
+
+  $('#volume-control input').on('input', function (event) {
+    player.setVolume(event.target.value);
+  });
 
 }

@@ -7,10 +7,10 @@
             <span class="song-number">${index + 1}</span>
             <span class="ion-play"></span>
             <span class="ion-pause"></span>
-          </button>
+            </button>
         </td>
         <td>${song.title}</td>
-        <td>${song.duration}</td>
+        <td>${player.prettyTime(parseInt(song.duration))}</td>
       </tr>
     `);
 
